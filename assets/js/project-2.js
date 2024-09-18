@@ -7,7 +7,12 @@ jQuery(document).ready(function () {
     jQuery("#slider").css({width:slideWidth,height:slideheight});
 
     jQuery("#slider a.control_next").click(function () {
-        jQuery("#slider ul li:last-child").prependTo("#slider ul");
+        jQuery("#slider ul").animate({
+            left:+slideWidth
+        },function(){
+            jQuery("#slider ul li:last-child").prependTo("#slider ul");
+        jQuery("#slider ul").css("left",'');
+        });
     });
 
     jQuery("#slider a.control_prev").click(function () {
