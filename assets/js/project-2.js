@@ -5,6 +5,7 @@ jQuery(document).ready(function () {
     let slideAllWidth = slideCount * slideWidth;
     console.log(slideAllWidth);
     jQuery("#slider").css({width:slideWidth,height:slideheight});
+    jQuery("#slider ul").css({width:slideAllWidth});
 
     jQuery("#slider a.control_next").click(function () {
         jQuery("#slider ul").animate({
@@ -16,8 +17,12 @@ jQuery(document).ready(function () {
     });
 
     jQuery("#slider a.control_prev").click(function () {
-        jQuery("#slider ul li:first-child").appendTo("#slider ul");
-
+        jQuery("#slider ul").animate({
+            left:-slideWidth
+        },function(){
+            jQuery("#slider ul li:first-child").appendTo("#slider ul");
+            jQuery("#slider ul").css("left",'');
+        });
     });
     
 
